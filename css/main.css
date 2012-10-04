@@ -93,20 +93,35 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-#output {
+#output_video {
     width: 640px;
     height: 480px;
     border-width: 5px;
     border-style: solid;
     border-color: #c3c3c3;
 
-
-
 }
 
 
+#canvas_video {
+    width: 640px;
+    height: 480px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #708090;
 
-div.main_video {
+}
+ 
+#canvas_video_blend {
+    width: 640px;
+    height: 480px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #CD3333;
+}
+
+
+div.main_video_div {
     margin-left:auto;
     margin-right:auto;
     width: 640px ;
