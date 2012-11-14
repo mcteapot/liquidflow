@@ -5,7 +5,7 @@ $("document").ready(function() {
 	var video = $('#output_video')[0];
 	var moveX = 0; // DEBUG
 	var handPoints;
-	var smoother = new Smoother(0.85, [0, 0, 0, 0, 0]);
+	//var smoother = new Smoother(0.85, [0, 0, 0, 0, 0]);
 	/* GET VIDEO */
 	var webcamError = function(e) {
 		alert('Webcam error!', e);
@@ -73,11 +73,23 @@ $("document").ready(function() {
 	var contextBlended = canvasBlended.getContext('2d');
 	var soundContext, bufferLoader;
 
-	//contextSource.translate(canvasSource.width, 0);
-	//contextSource.scale(-1, 1);
+	var notesPos = [0, 82, 159, 238, 313, 390, 468, 544];
+	var notes = [];
+	var ySpots = 8;
+	var xSpots = 8;
+
+
+	contextSource.translate(canvasSource.width, 0);
+	contextSource.scale(-1, 1);
 
 	function initialize() {
 		update();
+	}
+
+	function createNotes() {
+		//for()
+		var maxY = 
+		for(var i = 0 )
 	}
 	
 	function update() {
@@ -91,15 +103,7 @@ $("document").ready(function() {
 		}
 		drawRect(canvasBlended, moveX, 50, 30, 30);
 		*/
-		handPoints = null;
-		handPoints = findHand();
-		if(handPoints) {
-			var posX = (handPoints[0] + handPoints[2] );
-			var posY = (handPoints[1] + handPoints[3] );
-			console.log('x ' + (handPoints[0] + handPoints[2] * 1.0/8 + $(video).offset().left));
-			console.log('y ' + (handPoints[1] + handPoints[3] * 1.0/8 + $(video).offset().top));
-			drawRect(canvasBlended, posX, posY, 30, 30, '#FFA500');
-		}
+
 		//checkAreas();
 		requestAnimFrame(update);
 	}
@@ -134,27 +138,13 @@ $("document").ready(function() {
 		ctx.fillRect(x, y, width, height);
 	}
 
-	function findHand() {
-		var finalCoords;
-		if (video.readyState === video.HAVE_ENOUGH_DATA) {
-			$(video).objectdetect("all", {scaleMin: 3, scaleFactor: 1.1, classifier: objectdetect.frontalface}, function(coords) {
-				if (coords[0]) {
-					coords = smoother.smooth(coords[0]);
-					//console.log(coords);
-					finalCoords = coords;
-					//drawRect(contextSource, 100, 50, 30, 30, '#FFA500');
-					//drawRect(contextSource, coords[0], coords[1], 5, 5, '#FFA500');
-					//drawRect(contextSource, coords[2], coords[3], 5, 5, '#F00060');
+	function checkAreas() {
+		// loop over the areas
 
-				} else {
-					console.log('nothing to see');
-				}
-			});
-		}
-		//console.log(finalCoords);
 
-		return finalCoords;
+
 	}
+
 
 	
 
